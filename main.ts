@@ -683,6 +683,9 @@ scene.onHitWall(SpriteKind.morei, function (sprite, location) {
 })
 function mareo () {
     if (level >= 17) {
+        if (level == 19) {
+            scene.setBackgroundColor(12)
+        }
         mySprite.setImage(img`
             . . . 2 2 2 2 2 2 . . . . . . 
             . . 2 2 2 2 2 2 2 2 2 2 . . . 
@@ -743,17 +746,17 @@ function mareo () {
                 f f f f f f f f f f f f f f f f 
                 f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
                 f 5 f 5 5 5 5 5 5 5 5 5 5 f 5 f 
-                f 5 5 5 5 f f f f f f 5 5 5 5 f 
-                f 5 5 5 5 f f f f f f 5 5 5 5 f 
-                f 5 5 5 5 f f 5 5 f f 5 5 5 5 f 
-                f 5 5 5 5 f f 5 5 f f 5 5 5 5 f 
-                f 5 5 5 5 5 5 5 5 f f 5 5 5 5 f 
-                f 5 5 5 5 5 5 f f f f 5 5 5 5 f 
-                f 5 5 5 5 5 5 f f 5 5 5 5 5 5 f 
-                f 5 5 5 5 5 5 f f 5 5 5 5 5 5 f 
+                f 5 5 5 5 4 4 4 4 4 4 f 5 5 5 f 
+                f 5 5 5 5 4 4 4 4 4 4 f 5 5 5 f 
+                f 5 5 5 5 4 4 f 5 4 4 f 5 5 5 f 
+                f 5 5 5 5 4 4 f 5 4 4 f 5 5 5 f 
+                f 5 5 5 5 5 5 5 5 4 4 f 5 5 5 f 
+                f 5 5 5 5 5 5 4 4 4 4 f 5 5 5 f 
+                f 5 5 5 5 5 5 4 4 f 5 5 5 5 5 f 
+                f 5 5 5 5 5 5 4 4 f 5 5 5 5 5 f 
                 f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
-                f 5 5 5 5 5 5 f f 5 5 5 5 5 5 f 
-                f 5 5 5 5 5 5 f f 5 5 5 5 5 5 f 
+                f 5 5 5 5 5 5 4 4 f 5 5 5 5 5 f 
+                f 5 5 5 5 5 5 4 4 f 5 5 5 5 5 f 
                 f 5 f 5 5 5 5 5 5 5 5 5 5 f 5 f 
                 f 5 5 5 5 5 5 5 5 5 5 5 5 5 5 f 
                 f f f f f f f f f f f f f f f f 
@@ -1499,22 +1502,62 @@ img`
     e e e e e e e e e e e e e e e e e e e e e e e e e b b b b b b b b b b b b b b b b b e e e e e e e e e e e e e e e e e e e e e e e e e e e e 
     `,
 img`
-    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . . b b b b b b . . . . b b b b b . . . . . . . . 
-    . . . . . . . . . . . . b b b . . . . . . . . . . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3 . . . . . . 
-    . . . . . . . . . . . . . . . . b b b . . . . . . . . . . . . . . . . . . . . . 
-    . . . 1 . 8 f 8 . . . . . . . . . . . . . . . . . . 2 . . 2 . . . . . . . . a . 
-    . . . . . . . . . . . . . . . . . . . . b b b . . b b b b b b b b b b b b b b b 
-    . . . . . . . . . . . . . . . . . . . . . . . . . b b b b b b b b b b b b b b b 
-    b b b b b b b b . . 2 . . . . 2 . . . . . . . . b b b b b b b b b b b b b b b b 
-    b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b 
-    b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b 
-    b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b 
+    . . . . . . . . . . . . . . . . 
+    . 1 . . . . . . . . . . . . . . 
+    . . . . 2 . . . . . . . . . . . 
+    b b b b b b b b b b . . . b . . 
+    b b b b b b b b . . . . . b . . 
+    b b b b b b b . . . . . . b . . 
+    b b b b b . . . . . . . . b . . 
+    . . . . . . . . c . . . . b . . 
+    . . b b b b b b b . . . . b . . 
+    . . 4 4 4 4 4 4 4 4 4 4 4 b . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . 2 . . 2 . . . . 
+    b b b b b . . b b b b b b b b b 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . b . . 
+    b b b b b b b b b b b b b b . . 
+    a . . . . . . . . . . . . . . . 
+    a . . . . . . . 2 . . 2 . . . b 
+    a . . . . . b b b b b b b b b b 
+    b b b b b b b b b b b b b b b b 
+    `,
+img`
+    b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b 
+    b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b 
+    b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b 
+    b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b 
+    b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b 
+    b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b . . . . . . . . b b b b b b b b b b b b b b b b b b b b b b b b b . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+    b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b . . . . . . . . b 8 8 8 8 8 8 8 8 8 8 b b b b b b b . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . b b b b b b b b b b b b b b b b b b b b b b b b b b b b c . . . . . . . b 8 . . . . . . . . 8 b b b b . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3 . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b . . b b 8 . . . . 8 . . . 8 b b b . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+    . . . 1 . 8 f 8 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . b b b . . b b 8 . . . . . . . . 8 b b b . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . a . 
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . b b . . b b 8 . . . 8 f 8 . . 8 b b . . . b b . . . . . . . . b b . . . b b . . . b b . . . b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b 
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . b . . . . . . . . . . . . . . . . . . b b b . . . b b . . . b b . . . b b . . . b b . . . b b b b b b b b b . . . . . . . . . . . . . . . . . b b b b b 
+    b b b b b b b b . . . . . . . 5 5 . . . 5 . . . 5 5 5 5 5 5 5 5 5 5 . . . . . . . . . . . . . . . . . . . . . . . . . . . . b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b . . . . . . . . . . . . . . . . . b b b b b 
+    b b b b b b b b b b b b b . . b b . . . b . . . b . b . b . b . b . b . . 2 . . . . 2 . . b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 b b b b b 
+    b b b b b b b b b b b b b . . b b . . . b . . . . . . . . . . . . . b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 b b b b b 
+    b b b b b b b b b b b b b 4 4 b b 4 4 4 b 4 4 4 4 4 4 4 4 4 4 4 4 4 b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b b 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 b b b b b 
+    `,
+img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . a . . . . . . . . . . . . c . 
+    8 8 8 8 . . . . . . . 8 8 8 8 8 
+    8 8 8 8 . . . . . 8 8 . . . . . 
+    8 8 8 8 8 . . . . . . . . . . . 
+    8 8 8 8 8 . . . . . . . . . . . 
+    8 8 8 8 8 8 8 8 8 . . . 8 8 8 8 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . 8 . . 2 . . 
+    . . . . . . . . . . . . 8 8 8 8 
+    8 8 8 . . . 8 8 8 . . 8 8 8 8 8 
+    . . . . . . . . . . . . . . . . 
+    1 . . . . . 2 . . . . 2 . . . . 
+    8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
     `
 ]
 level = game.askForNumber("level", 2)
@@ -2051,14 +2094,14 @@ game.onUpdateInterval(5000, function () {
         sprite_list = sprites.allOfKind(SpriteKind.boss111)
         if (sprite_list.length >= 1) {
             for (let value of sprite_list) {
-                for (let index = 0; index < 40; index++) {
+                for (let index = 0; index < 47; index++) {
                     value.y += -1
                 }
             }
         }
     }
 })
-game.onUpdateInterval(1000, function () {
+game.onUpdateInterval(2000, function () {
     if (level >= 17) {
         sprite_list = sprites.allOfKind(SpriteKind.boss111)
         if (sprite_list.length >= 1) {
