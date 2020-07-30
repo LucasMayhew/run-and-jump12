@@ -653,6 +653,24 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.woter, function (sprite, otherSp
         }
     }
 })
+function doSomething () {
+    mySprite3 = image.create(20, 20)
+    mySprite3.fillRect(randint(1, 10), randint(1, 10), randint(10, 20), randint(10, 20), 8)
+    mySprite3.fillRect(randint(1, 10), randint(1, 10), randint(10, 20), randint(10, 20), 5)
+    mySprite3.fillRect(randint(1, 10), randint(1, 10), randint(10, 20), randint(10, 20), 2)
+    mySprite3.fillRect(randint(1, 10), randint(1, 10), randint(10, 20), randint(10, 20), 13)
+    mySprite3.fillRect(randint(1, 10), randint(1, 10), randint(10, 20), randint(10, 20), 8)
+    mySprite3.fillRect(randint(1, 10), randint(1, 10), randint(10, 20), randint(10, 20), 11)
+    mySprite3.fillRect(randint(1, 50), randint(40, 50), randint(10, 20), randint(10, 20), 10)
+    mySprite3.fillRect(randint(1, 10), randint(1, 10), randint(10, 20), randint(10, 20), 6)
+    mySprite3.fillRect(randint(1, 10), randint(1, 10), 1, 1, 13)
+    mySprite3.fillRect(randint(1, 10), randint(1, 10), 1, 1, 2)
+    mySprite3.fillRect(randint(1, 10), randint(1, 10), 1, 1, 12)
+    mySprite3.fillRect(randint(1, 10), randint(1, 10), 1, 1, 3)
+    mySprite3.fillRect(randint(1, 10), randint(1, 10), 1, 1, 1)
+    mySprite3.fillRect(randint(1, 50), randint(40, 50), randint(10, 20), 1, 4)
+    mySprite3.fillRect(randint(1, 50), randint(40, 50), randint(10, 20), 1, 10)
+}
 sprites.onOverlap(SpriteKind.Player, SpriteKind.coin, function (sprite, otherSprite) {
     otherSprite.destroy()
     info.changeScoreBy(1)
@@ -1685,6 +1703,8 @@ let boss_fight = 0
 let mySprite2: Sprite = null
 let mySprite: Sprite = null
 let level = 0
+let mySprite3: Image = null
+doSomething()
 let list = [
 img`
     . . . . . . . . . . . . . . . . . . . . . . . b . . . . . . . c . 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
@@ -2718,7 +2738,9 @@ img`
     . . 6 6 6 6 6 6 6 6 6 6 6 6 6 6 
     1 . 6 6 6 6 6 6 6 6 6 6 6 6 6 d 
     7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
-    `
+    `,
+mySprite3,
+mySprite3
 ]
 level = game.askForNumber("level", 2)
 scene.setTileMap(list[level])
