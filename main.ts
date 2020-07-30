@@ -663,13 +663,13 @@ function doSomething () {
     mySprite3.fillRect(randint(1, 10), randint(1, 10), randint(10, 20), randint(10, 20), 11)
     mySprite3.fillRect(randint(1, 50), randint(40, 50), randint(10, 20), randint(10, 20), 10)
     mySprite3.fillRect(randint(1, 10), randint(1, 10), randint(10, 20), randint(10, 20), 6)
+    mySprite3.fillRect(randint(1, 10), randint(1, 10), 1, 1, 1)
     mySprite3.fillRect(randint(1, 10), randint(1, 10), 1, 1, 13)
     mySprite3.fillRect(randint(1, 10), randint(1, 10), 1, 1, 2)
     mySprite3.fillRect(randint(1, 10), randint(1, 10), 1, 1, 12)
     mySprite3.fillRect(randint(1, 10), randint(1, 10), 1, 1, 3)
-    mySprite3.fillRect(randint(1, 10), randint(1, 10), 1, 1, 1)
-    mySprite3.fillRect(randint(1, 50), randint(40, 50), randint(10, 20), 1, 4)
-    mySprite3.fillRect(randint(1, 50), randint(40, 50), randint(10, 20), 1, 10)
+    mySprite3.fillRect(randint(1, 50), randint(40, 50), randint(0, 20), 1, 4)
+    mySprite3.fillRect(randint(1, 30), randint(40, 50), 50, 1, 10)
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.coin, function (sprite, otherSprite) {
     otherSprite.destroy()
