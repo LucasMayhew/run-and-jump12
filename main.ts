@@ -510,26 +510,28 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
             `)
     } else {
         if (!(mySprite.isHittingTile(CollisionDirection.Bottom))) {
-            mySprite.setImage(img`
-                . . . 2 2 2 2 2 2 . . . . . . 
-                . . 2 2 2 2 2 2 2 2 2 2 . . . 
-                . . e e e 4 4 e 4 4 . . . . . 
-                . e 4 e 4 4 4 e 4 4 4 4 . . . 
-                . e 4 e e 4 4 4 e 4 4 4 4 . . 
-                . e e 4 4 4 4 e e e e e . . . 
-                . . . 4 4 4 4 4 4 4 4 . . . . 
-                . . e e 2 e e e e . . . . . . 
-                . e e e 2 e e 2 e e e e . . . 
-                e e e e 2 2 2 2 e e e e e . . 
-                4 4 e 2 4 2 2 4 2 e 4 4 4 . . 
-                4 4 4 2 2 2 2 2 2 4 4 4 4 . . 
-                4 4 2 2 2 2 2 2 2 2 4 4 4 . . 
-                . . 2 2 2 2 . 2 2 2 2 . . . . 
-                . e e e e . . . e e e e . . . 
-                e e e e e . . . e e e e e . . 
-                . . . . . . . . . . . . . . . 
-                `)
-            mySprite.image.flipX()
+            if (castoon == 0) {
+                mySprite.setImage(img`
+                    . . . 2 2 2 2 2 2 . . . . . . 
+                    . . 2 2 2 2 2 2 2 2 2 2 . . . 
+                    . . e e e 4 4 e 4 4 . . . . . 
+                    . e 4 e 4 4 4 e 4 4 4 4 . . . 
+                    . e 4 e e 4 4 4 e 4 4 4 4 . . 
+                    . e e 4 4 4 4 e e e e e . . . 
+                    . . . 4 4 4 4 4 4 4 4 . . . . 
+                    . . e e 2 e e e e . . . . . . 
+                    . e e e 2 e e 2 e e e e . . . 
+                    e e e e 2 2 2 2 e e e e e . . 
+                    4 4 e 2 4 2 2 4 2 e 4 4 4 . . 
+                    4 4 4 2 2 2 2 2 2 4 4 4 4 . . 
+                    4 4 2 2 2 2 2 2 2 2 4 4 4 . . 
+                    . . 2 2 2 2 . 2 2 2 2 . . . . 
+                    . e e e e . . . e e e e . . . 
+                    e e e e e . . . e e e e e . . 
+                    . . . . . . . . . . . . . . . 
+                    `)
+                mySprite.image.flipX()
+            }
         }
     }
 })
@@ -541,6 +543,9 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.mushorm, function (sprite, other
     otherSprite.destroy(effects.hearts, 100)
     music.baDing.play()
     info.changeLifeBy(1)
+    if (level == 38) {
+        castoon = 1
+    }
 })
 scene.onHitTile(SpriteKind.Player, 10, function (sprite) {
     game.over(true)
@@ -615,25 +620,27 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
             `)
     } else {
         if (!(mySprite.isHittingTile(CollisionDirection.Bottom))) {
-            mySprite.setImage(img`
-                . . . 2 2 2 2 2 2 . . . . . . 
-                . . 2 2 2 2 2 2 2 2 2 2 . . . 
-                . . e e e 4 4 e 4 4 . . . . . 
-                . e 4 e 4 4 4 e 4 4 4 4 . . . 
-                . e 4 e e 4 4 4 e 4 4 4 4 . . 
-                . e e 4 4 4 4 e e e e e . . . 
-                . . . 4 4 4 4 4 4 4 4 . . . . 
-                . . e e 2 e e e e . . . . . . 
-                . e e e 2 e e 2 e e e e . . . 
-                e e e e 2 2 2 2 e e e e e . . 
-                4 4 e 2 4 2 2 4 2 e 4 4 4 . . 
-                4 4 4 2 2 2 2 2 2 4 4 4 4 . . 
-                4 4 2 2 2 2 2 2 2 2 4 4 4 . . 
-                . . 2 2 2 2 . 2 2 2 2 . . . . 
-                . e e e e . . . e e e e . . . 
-                e e e e e . . . e e e e e . . 
-                . . . . . . . . . . . . . . . 
-                `)
+            if (castoon == 0) {
+                mySprite.setImage(img`
+                    . . . 2 2 2 2 2 2 . . . . . . 
+                    . . 2 2 2 2 2 2 2 2 2 2 . . . 
+                    . . e e e 4 4 e 4 4 . . . . . 
+                    . e 4 e 4 4 4 e 4 4 4 4 . . . 
+                    . e 4 e e 4 4 4 e 4 4 4 4 . . 
+                    . e e 4 4 4 4 e e e e e . . . 
+                    . . . 4 4 4 4 4 4 4 4 . . . . 
+                    . . e e 2 e e e e . . . . . . 
+                    . e e e 2 e e 2 e e e e . . . 
+                    e e e e 2 2 2 2 e e e e e . . 
+                    4 4 e 2 4 2 2 4 2 e 4 4 4 . . 
+                    4 4 4 2 2 2 2 2 2 4 4 4 4 . . 
+                    4 4 2 2 2 2 2 2 2 2 4 4 4 . . 
+                    . . 2 2 2 2 . 2 2 2 2 . . . . 
+                    . e e e e . . . e e e e . . . 
+                    e e e e e . . . e e e e e . . 
+                    . . . . . . . . . . . . . . . 
+                    `)
+            }
         }
     }
 })
@@ -668,8 +675,8 @@ function doSomething () {
     mySprite3.fillRect(randint(1, 10), randint(1, 10), 1, 1, 2)
     mySprite3.fillRect(randint(1, 10), randint(1, 10), 1, 1, 12)
     mySprite3.fillRect(randint(1, 10), randint(1, 10), 1, 1, 3)
-    mySprite3.fillRect(randint(1, 50), randint(40, 50), randint(0, 20), 1, 4)
-    mySprite3.fillRect(randint(1, 30), randint(40, 50), 50, 1, 10)
+    mySprite3.fillRect(randint(1, 20), 20, randint(2, 20), 1, 4)
+    mySprite3.fillRect(randint(10, 15), 20, randint(10, 20), 1, 10)
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.coin, function (sprite, otherSprite) {
     otherSprite.destroy()
@@ -1654,24 +1661,45 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.life1, function (sprite, otherSp
         f e e e e e e e e e e e e e e f 
         f f f f f f f f f f f f f f f f 
         `)
-    sprites.setDataSprite(otherSprite, "mushrom", sprites.create(img`
-        . . . . . . 4 4 4 4 . . . . . . 
-        . . . . . 4 4 4 4 2 2 . . . . . 
-        . . . . 4 4 4 4 2 2 2 2 . . . . 
-        . . . 4 4 4 4 4 2 2 2 2 2 . . . 
-        . . 4 4 4 4 4 4 4 2 2 2 4 4 . . 
-        . 4 4 2 2 2 4 4 4 4 4 4 4 4 4 . 
-        . 4 2 2 2 2 2 4 4 4 4 4 4 4 4 . 
-        4 4 2 2 2 2 2 4 4 4 4 4 2 2 4 4 
-        4 4 2 2 2 2 2 4 4 4 4 4 2 2 2 4 
-        4 4 4 2 2 2 4 4 4 4 4 4 4 2 2 4 
-        4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
-        . 4 2 2 2 1 1 1 1 1 1 2 2 2 4 . 
-        . . . . 1 1 1 1 1 1 1 1 . . . . 
-        . . . . 1 1 1 1 1 1 4 1 . . . . 
-        . . . . 1 1 1 1 1 1 4 1 . . . . 
-        . . . . . 1 1 1 1 4 1 . . . . . 
-        `, SpriteKind.mushorm))
+    if (level == 38) {
+        sprites.setDataSprite(otherSprite, "mushrom", sprites.create(img`
+            . . . . . . 4 4 4 4 . . . . . . 
+            . . . . . 4 4 4 4 2 2 . . . . . 
+            . . . . 4 4 4 4 2 2 2 2 . . . . 
+            . . . 4 4 4 4 4 2 2 2 2 2 . . . 
+            . . 4 4 4 4 4 4 4 2 2 2 4 4 . . 
+            . 4 4 2 2 2 f f f f 4 4 4 4 4 . 
+            . 4 2 2 2 2 2 4 4 f 4 4 4 4 4 . 
+            4 4 2 2 2 2 2 f f f 4 4 2 2 4 4 
+            4 4 2 2 2 2 2 f 4 4 4 4 2 2 2 4 
+            4 4 4 2 2 2 4 f 4 4 4 4 4 2 2 4 
+            4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+            . 4 2 2 2 1 1 f 1 1 1 2 2 2 4 . 
+            . . . . 1 1 1 1 1 1 1 1 . . . . 
+            . . . . 1 1 1 1 1 1 4 1 . . . . 
+            . . . . 1 1 1 1 1 1 4 1 . . . . 
+            . . . . . 1 1 1 1 4 1 . . . . . 
+            `, SpriteKind.mushorm))
+    } else {
+        sprites.setDataSprite(otherSprite, "mushrom", sprites.create(img`
+            . . . . . . 4 4 4 4 . . . . . . 
+            . . . . . 4 4 4 4 2 2 . . . . . 
+            . . . . 4 4 4 4 2 2 2 2 . . . . 
+            . . . 4 4 4 4 4 2 2 2 2 2 . . . 
+            . . 4 4 4 4 4 4 4 2 2 2 4 4 . . 
+            . 4 4 2 2 2 4 4 4 4 4 4 4 4 4 . 
+            . 4 2 2 2 2 2 4 4 4 4 4 4 4 4 . 
+            4 4 2 2 2 2 2 4 4 4 4 4 2 2 4 4 
+            4 4 2 2 2 2 2 4 4 4 4 4 2 2 2 4 
+            4 4 4 2 2 2 4 4 4 4 4 4 4 2 2 4 
+            4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+            . 4 2 2 2 1 1 1 1 1 1 2 2 2 4 . 
+            . . . . 1 1 1 1 1 1 1 1 . . . . 
+            . . . . 1 1 1 1 1 1 4 1 . . . . 
+            . . . . 1 1 1 1 1 1 4 1 . . . . 
+            . . . . . 1 1 1 1 4 1 . . . . . 
+            `, SpriteKind.mushorm))
+    }
     sprites.readDataSprite(otherSprite, "mushrom").x = otherSprite.x
     sprites.readDataSprite(otherSprite, "mushrom").y = otherSprite.y
     sprites.readDataSprite(otherSprite, "mushrom").y += -16
@@ -1697,6 +1725,7 @@ let projectile: Sprite = null
 let sprite_list: Sprite[] = []
 let boss121212: Sprite = null
 let theboss: Sprite = null
+let castoon = 0
 let pet12: Sprite = null
 let leist2: Image[] = []
 let boss_fight = 0
@@ -2740,7 +2769,43 @@ img`
     7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
     `,
 mySprite3,
-mySprite3
+mySprite3,
+img`
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6 6 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6 6 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . b b b b b b b . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6 6 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . b 6 6 6 6 6 6 6 b . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6 6 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . b 6 6 6 6 6 6 6 6 d b . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6 6 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . b 6 6 6 6 6 6 6 6 6 . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6 6 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . b c 6 6 6 6 6 6 6 6 . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6 6 . . . . . . . . . . . . . . . . . . . . . . . . . . 2 . . . . . . . . b b b b 6 6 6 6 6 d b . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . . . 8 f 8 . . . . . . . . . . . . . . . . . . . 6 d . . . . . . . . . . . . . . . . . . . . . 7 7 7 7 7 7 7 7 7 . . . . . b d 6 6 6 6 6 6 6 6 b . . . . 2 . . . . . . . 
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6 d . . . . . . . 2 . . . . . . . . . . . . 7 e e e e e e e e e 7 . . . . b d 6 6 6 6 6 6 6 6 b . . . 7 7 7 7 7 . . a . 
+    . . . . . . . . . . . . . . . 1 . . . . . . . . . . . . . . . . 2 . 2 . . . . . 6 6 . . . 7 7 7 7 7 7 7 . . . . . . . . . 7 e e e e e e e e e e e 7 . . . b 6 6 6 6 6 6 6 6 d b . . 7 e e e e e 7 7 7 7 
+    . . . . . . . . . . . . . 7 7 7 7 7 7 7 . . . . . . . . . . 7 7 7 7 7 7 7 . . . 6 6 . . 7 e e e e e e e 7 . . . . . . . 7 e e e e e e e e e e e e e 7 . . b b 6 6 6 6 6 6 6 b b . . e e e e e e e e e e 
+    . . . . . . . . . . . . 7 e e e e e e e 7 . . . . . 2 . . 7 e e e e e e e 7 . . d 6 . 7 e e e e e e e e e 7 . . . . . 7 e e e e e e e e e e e e e e e 7 . . b b b b b b b b b . . . e e e e e e e e e e 
+    . . . . . . . . . . . 7 e e e e e e e e e 7 7 7 7 7 7 7 7 e e e e e e e e e 7 . 6 6 7 e e e e e e e e e e e 7 . . . . e e e e e e e e e e e e e e e e e . . . . . . . . . . . . . . e e e e e e e e e e 
+    . . . . . . . . . . . e e e e e e e e e e e e e e e e e e e e e e e e e e e 7 . 6 6 e e e e e e e e e e e e e 4 4 4 4 e e e e e e e e e e e e e e e e e . . . . . . . . . . . . . . e e e e e e e e e e 
+    . . . . . . . . . . . e e e e e e e e e e e e e e e e e e e e e e e e e e e e 7 7 7 e e e e e e e e e e e e e 4 4 4 4 e e e e e e e e e e e e e e e e e 7 7 7 7 7 7 7 7 7 7 7 7 7 7 e e e e e e e e e e 
+    4 4 4 4 4 4 4 4 4 4 4 e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e 4 4 4 4 e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e 
+    `,
+img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . a . . . . . 
+    . . . 7 7 7 7 7 7 7 7 7 7 7 7 7 
+    7 . . e e e e e e e e e e e . c 
+    e . . . . . . . . . . . . . . . 
+    e 7 . . . . . . . . . . . . . . 
+    e e . 2 . . . 2 . . . 2 . 7 . . 
+    e e 7 7 7 7 7 7 7 7 7 7 7 e . . 
+    e e e e e e e e e e e e e e . . 
+    e e e e e e e e e e e e e e . . 
+    . . . . . . . . . . . . e e . . 
+    . 1 . . . . . . . . . . . e . . 
+    . . . 8 f 8 . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 
+    7 e e e e e e e e e e e e e e e 
+    `
 ]
 level = game.askForNumber("level", 2)
 scene.setTileMap(list[level])
@@ -3328,194 +3393,243 @@ forever(function () {
     }
 })
 forever(function () {
-    if (level >= 17) {
-        if (controller.A.isPressed()) {
-            pause(1)
-        } else {
-            if (!(controller.A.isPressed()) && mySprite.isHittingTile(CollisionDirection.Bottom)) {
-                if (controller.right.isPressed()) {
-                    animation.stopAnimation(animation.AnimationTypes.All, mySprite)
-                    animation.runImageAnimation(
-                    mySprite,
-                    [img`
-                        . . . 2 2 2 2 2 2 . . . . . . 
-                        . . 2 2 2 2 2 2 2 2 2 2 . . . 
-                        . . e e e 4 4 e 4 4 . . . . . 
-                        . e 4 e 4 4 4 e 4 4 4 4 . . . 
-                        . e 4 e e 4 4 4 e 4 4 4 4 . . 
-                        . e e 4 4 4 4 e e e e e . . . 
-                        . . . 4 4 4 4 4 4 4 4 . . . . 
-                        . . e e 2 e e e e . . . . . . 
-                        . e e e 2 e e 2 e e e e . . . 
-                        e e e e 2 2 2 2 e e e e e . . 
-                        4 4 e 2 4 2 2 4 2 e 4 4 4 . . 
-                        4 4 4 2 2 2 2 2 2 4 4 4 4 . . 
-                        4 4 2 2 2 2 2 2 2 2 4 4 4 . . 
-                        . . 2 2 2 2 . 2 2 2 2 . . . . 
-                        . e e e e . . . e e e e . . . 
-                        e e e e e . . . e e e e e . . 
-                        . . . . . . . . . . . . . . . 
-                        `,img`
-                        . . . . 2 2 2 2 2 2 . . . . . 
-                        . . . 2 2 2 2 2 2 2 2 2 2 . . 
-                        . . . e e e 4 4 e 4 4 . . . . 
-                        . . e 4 e 4 4 4 e 4 4 4 4 . . 
-                        . . e 4 e e 4 4 4 e 4 4 4 4 . 
-                        . . e e 4 4 4 4 e e e e e . . 
-                        . . . . 4 4 4 4 4 4 4 4 . . . 
-                        . . . e e e e 2 e e 4 4 . . . 
-                        . . 4 e e e e e e 4 4 4 4 . . 
-                        . 4 4 2 e e e e e 4 4 4 . . . 
-                        . e e 2 2 2 2 2 2 2 2 . . . . 
-                        . e 2 2 2 2 2 2 2 2 2 . . . . 
-                        e e 2 2 2 2 2 2 2 2 . . . . . 
-                        e e . . . e e e e . . . . . . 
-                        . . . . . e e e e e . . . . . 
-                        . . . . . . . . . . . . . . . 
-                        . . . . . . . . . . . . . . . 
-                        `,img`
-                        . . . 2 2 2 2 2 2 . . . . . . 
-                        . . 2 2 2 2 2 2 2 2 2 2 . . . 
-                        . . e e e 4 4 e 4 4 . . . . . 
-                        . e 4 e 4 4 4 e 4 4 4 4 . . . 
-                        . e 4 e e 4 4 4 e 4 4 4 4 . . 
-                        . e e 4 4 4 4 e e e e e . . . 
-                        . . . 4 4 4 4 4 4 4 4 . . . . 
-                        . . e e 2 e e e e . . . . . . 
-                        . e e e e 2 2 e e e . . . . . 
-                        . e e e 2 2 4 2 2 4 4 . . . . 
-                        . e e e e 2 2 2 2 2 2 . . . . 
-                        . 2 e e 4 4 4 2 2 2 2 . . . . 
-                        . . 2 e 4 4 2 2 2 2 . . . . . 
-                        . . . 2 2 2 e e e e . . . . . 
-                        . . . e e e e e e e e . . . . 
-                        . . . e e e e e . . . . . . . 
-                        . . . . . . . . . . . . . . . 
-                        `,img`
-                        . . . . . 2 2 2 2 2 2 . . . . 
-                        . . . . 2 2 2 2 2 2 2 2 2 2 . 
-                        . . . . e e e 4 4 e 4 4 . . . 
-                        . . . e 4 e 4 4 4 e 4 4 4 4 . 
-                        . . . e 4 e e 4 4 4 e 4 4 4 4 
-                        . . . e e 4 4 4 4 e e e e e . 
-                        . . . . . 4 4 4 4 4 4 4 4 . . 
-                        . . e e e e 2 2 e e e . . . . 
-                        4 4 e e e e 2 2 2 e e e 4 4 . 
-                        4 4 4 4 e e 2 4 2 2 2 e e 4 . 
-                        4 4 4 . 2 2 2 2 2 2 2 2 . e . 
-                        . . . 2 2 2 2 2 2 2 2 2 e e . 
-                        . . 2 2 2 2 2 2 2 2 2 2 e e . 
-                        . e e 2 2 2 2 . . 2 2 2 e e . 
-                        . e e e e . . . . . . . . . . 
-                        . . e e e e . . . . . . . . . 
-                        . . . . . . . . . . . . . . . 
-                        `],
-                    100,
-                    false
-                    )
-                    pause(400)
-                } else if (controller.left.isPressed()) {
-                    animation.stopAnimation(animation.AnimationTypes.All, mySprite)
-                    animation.runImageAnimation(
-                    mySprite,
-                    [img`
-                        . . . . . . 2 2 2 2 2 2 . . . 
-                        . . . 2 2 2 2 2 2 2 2 2 2 . . 
-                        . . . . . 4 e 4 4 e e e e . . 
-                        . . . 4 4 4 e 4 4 4 e 4 e e . 
-                        . . 4 4 4 e 4 4 4 e e 4 e e . 
-                        . . . e e e e 4 4 4 4 e e e . 
-                        . . . . 4 4 4 4 4 4 4 4 . . . 
-                        . . . . . . e e e 2 e e e . . 
-                        . . . e e e 2 e e 2 e e e e . 
-                        . . e e e e 2 2 2 2 e e e e e 
-                        . . 4 4 e 2 4 2 2 4 2 e 4 4 4 
-                        . . 4 4 4 2 2 2 2 2 2 4 4 4 4 
-                        . . 4 4 2 2 2 2 2 2 2 2 4 4 4 
-                        . . . . 2 2 2 2 . 2 2 2 2 . . 
-                        . . . e e e e . . . e e e e . 
-                        . . e e e e e . . . e e e e e 
-                        . . . . . . . . . . . . . . . 
-                        `,img`
-                        . . . . 2 2 2 2 2 2 . . . . . 
-                        . 2 2 2 2 2 2 2 2 2 2 . . . . 
-                        . . . 4 e 4 4 e e e e . . . . 
-                        . 4 4 4 e 4 4 4 e 4 e e . . . 
-                        4 4 4 e 4 4 4 e e 4 e e . . . 
-                        . e e e e 4 4 4 4 e e e . . . 
-                        . . 4 4 4 4 4 4 4 4 . . . . . 
-                        . . 4 4 e 2 e e e e e . . . . 
-                        . 4 4 4 e e e e e e 4 4 . . . 
-                        . . 4 4 e e e e e 2 4 4 4 . . 
-                        . . . 2 2 2 2 2 2 2 e e e . . 
-                        . . . 2 2 2 2 2 2 2 2 e e . . 
-                        . . . . 2 2 2 2 2 2 2 e e e . 
-                        . . . . . e e e e . . . e e . 
-                        . . . . e e e e e . . . . . . 
-                        . . . . . . . . . . . . . . . 
-                        . . . . . . . . . . . . . . . 
-                        `,img`
-                        . . . . 2 2 2 2 2 2 . . . . . 
-                        . 2 2 2 2 2 2 2 2 2 2 . . . . 
-                        . . . 4 e 4 4 e e e e . . . . 
-                        . 4 4 4 e 4 4 4 e 4 e e . . . 
-                        4 4 4 e 4 4 4 e e 4 e e . . . 
-                        . e e e e 4 4 4 4 e e e . . . 
-                        . . 4 4 4 4 4 4 4 4 . . . . . 
-                        . . . . e e e 2 e e e . . . . 
-                        . . . e e 2 2 e e e e e . . . 
-                        . . 4 2 2 4 2 2 e e e e . . . 
-                        . . 2 2 2 2 2 e e e e e . . . 
-                        . . 2 2 2 4 4 4 e e 2 2 . . . 
-                        . . . 2 2 2 4 4 e 2 2 . . . . 
-                        . . . e e e 2 2 2 2 . . . . . 
-                        . . e e e e e e e e . . . . . 
-                        . . . . . e e e e e . . . . . 
-                        . . . . . . . . . . . . . . . 
-                        `,img`
-                        . . . . . 2 2 2 2 2 2 . . . . 
-                        . . 2 2 2 2 2 2 2 2 2 2 . . . 
-                        . . . . 4 e 4 4 e e e e . . . 
-                        . . 4 4 4 e 4 4 4 e 4 e e . . 
-                        . 4 4 4 e 4 4 4 e e 4 e e . . 
-                        . . e e e e 4 4 4 4 e e e . . 
-                        . . . 4 4 4 4 4 4 4 4 . . . . 
-                        . . . . . e e 2 2 e e e e e . 
-                        4 4 4 e e e 2 2 2 e e e e 4 4 
-                        4 4 e e 2 2 2 4 2 e e e 4 4 4 
-                        . e e . 2 2 2 2 2 2 2 2 . 4 4 
-                        . e e 2 2 2 2 2 2 2 2 2 2 . . 
-                        . e e 2 2 2 2 2 2 2 2 2 2 2 . 
-                        . e e 2 2 2 2 . . 2 2 2 e e e 
-                        . . . . . . . . . . . e e e e 
-                        . . . . . . . . . . e e e e . 
-                        . . . . . . . . . . . . . . . 
-                        `],
-                    100,
-                    false
-                    )
-                    pause(400)
-                } else {
-                    animation.stopAnimation(animation.AnimationTypes.All, mySprite)
-                    mySprite.setImage(img`
-                        . . . 2 2 2 2 2 2 . . . . . . 
-                        . . 2 2 2 2 2 2 2 2 2 2 . . . 
-                        . . e e e 4 4 e 4 4 . . . . . 
-                        . e 4 e 4 4 4 e 4 4 4 4 . . . 
-                        . e 4 e e 4 4 4 e 4 4 4 4 . . 
-                        . e e 4 4 4 4 e e e e e . . . 
-                        . . . 4 4 4 4 4 4 4 4 . . . . 
-                        . . e e 2 e e e e . . . . . . 
-                        . e e e 2 e e 2 e e e e . . . 
-                        e e e e 2 2 2 2 e e e e e . . 
-                        4 4 e 2 4 2 2 4 2 e 4 4 4 . . 
-                        4 4 4 2 2 2 2 2 2 4 4 4 4 . . 
-                        4 4 2 2 2 2 2 2 2 2 4 4 4 . . 
-                        . . 2 2 2 2 . 2 2 2 2 . . . . 
-                        . e e e e . . . e e e e . . . 
-                        e e e e e . . . e e e e e . . 
-                        . . . . . . . . . . . . . . . 
-                        `)
+    if (!(castoon == 0)) {
+        if (castoon == 1) {
+            animation.stopAnimation(animation.AnimationTypes.All, mySprite)
+            animation.runImageAnimation(
+            mySprite,
+            [img`
+                . . . . . . 4 4 4 4 . . . . . . 
+                . . . . . 4 4 4 4 4 4 . . . . . 
+                . . . . 4 4 4 4 4 4 4 4 . . . . 
+                . . . 4 4 4 4 4 4 4 4 4 4 . . . 
+                . . 4 f f 4 4 4 4 4 4 f f 4 . . 
+                . 4 4 4 d f 4 4 4 4 f d 4 4 4 . 
+                . 4 4 4 d f f f f f f d 4 4 4 . 
+                4 4 4 4 d f d 4 4 d f d 4 4 4 4 
+                4 4 4 4 d d d 4 4 d d d 4 4 4 4 
+                4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+                . 4 4 4 4 d d d d d d 4 4 4 4 . 
+                . . . . d d d d d d d d . . . . 
+                . . f f d d d d d d d d . . . . 
+                . f f f f f d d d d d f f . . . 
+                . f f f f f f d d d f f f . . . 
+                . . f f f f f . . f f f . . . . 
+                . . . . . . . . . . . . . . . . 
+                `,img`
+                . . . . . . 4 4 4 4 . . . . . . 
+                . . . . . 4 4 4 4 4 4 . . . . . 
+                . . . . 4 4 4 4 4 4 4 4 . . . . 
+                . . . 4 4 4 4 4 4 4 4 4 4 . . . 
+                . . 4 f f 4 4 4 4 4 4 f f 4 . . 
+                . 4 4 4 d f 4 4 4 4 f d 4 4 4 . 
+                . 4 4 4 d f f f f f f d 4 4 4 . 
+                4 4 4 4 d f d 4 4 d f d 4 4 4 4 
+                4 4 4 4 d d d 4 4 d d d 4 4 4 4 
+                4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 
+                . 4 4 4 4 d d d d d d 4 4 4 4 . 
+                . . . . d d d d d d d d . . . . 
+                . . . . d d d d d d d d f f . . 
+                . . . f f d d d d d f f f f f . 
+                . . . f f f d d d f f f f f f . 
+                . . . . f f f . . f f f f f . . 
+                . . . . . . . . . . . . . . . . 
+                `],
+            500,
+            true
+            )
+            pause(1000)
+        }
+    } else {
+        if (level >= 17) {
+            if (controller.A.isPressed()) {
+                pause(1)
+            } else {
+                if (!(controller.A.isPressed()) && mySprite.isHittingTile(CollisionDirection.Bottom)) {
+                    if (controller.right.isPressed()) {
+                        animation.stopAnimation(animation.AnimationTypes.All, mySprite)
+                        animation.runImageAnimation(
+                        mySprite,
+                        [img`
+                            . . . 2 2 2 2 2 2 . . . . . . 
+                            . . 2 2 2 2 2 2 2 2 2 2 . . . 
+                            . . e e e 4 4 e 4 4 . . . . . 
+                            . e 4 e 4 4 4 e 4 4 4 4 . . . 
+                            . e 4 e e 4 4 4 e 4 4 4 4 . . 
+                            . e e 4 4 4 4 e e e e e . . . 
+                            . . . 4 4 4 4 4 4 4 4 . . . . 
+                            . . e e 2 e e e e . . . . . . 
+                            . e e e 2 e e 2 e e e e . . . 
+                            e e e e 2 2 2 2 e e e e e . . 
+                            4 4 e 2 4 2 2 4 2 e 4 4 4 . . 
+                            4 4 4 2 2 2 2 2 2 4 4 4 4 . . 
+                            4 4 2 2 2 2 2 2 2 2 4 4 4 . . 
+                            . . 2 2 2 2 . 2 2 2 2 . . . . 
+                            . e e e e . . . e e e e . . . 
+                            e e e e e . . . e e e e e . . 
+                            . . . . . . . . . . . . . . . 
+                            `,img`
+                            . . . . 2 2 2 2 2 2 . . . . . 
+                            . . . 2 2 2 2 2 2 2 2 2 2 . . 
+                            . . . e e e 4 4 e 4 4 . . . . 
+                            . . e 4 e 4 4 4 e 4 4 4 4 . . 
+                            . . e 4 e e 4 4 4 e 4 4 4 4 . 
+                            . . e e 4 4 4 4 e e e e e . . 
+                            . . . . 4 4 4 4 4 4 4 4 . . . 
+                            . . . e e e e 2 e e 4 4 . . . 
+                            . . 4 e e e e e e 4 4 4 4 . . 
+                            . 4 4 2 e e e e e 4 4 4 . . . 
+                            . e e 2 2 2 2 2 2 2 2 . . . . 
+                            . e 2 2 2 2 2 2 2 2 2 . . . . 
+                            e e 2 2 2 2 2 2 2 2 . . . . . 
+                            e e . . . e e e e . . . . . . 
+                            . . . . . e e e e e . . . . . 
+                            . . . . . . . . . . . . . . . 
+                            . . . . . . . . . . . . . . . 
+                            `,img`
+                            . . . 2 2 2 2 2 2 . . . . . . 
+                            . . 2 2 2 2 2 2 2 2 2 2 . . . 
+                            . . e e e 4 4 e 4 4 . . . . . 
+                            . e 4 e 4 4 4 e 4 4 4 4 . . . 
+                            . e 4 e e 4 4 4 e 4 4 4 4 . . 
+                            . e e 4 4 4 4 e e e e e . . . 
+                            . . . 4 4 4 4 4 4 4 4 . . . . 
+                            . . e e 2 e e e e . . . . . . 
+                            . e e e e 2 2 e e e . . . . . 
+                            . e e e 2 2 4 2 2 4 4 . . . . 
+                            . e e e e 2 2 2 2 2 2 . . . . 
+                            . 2 e e 4 4 4 2 2 2 2 . . . . 
+                            . . 2 e 4 4 2 2 2 2 . . . . . 
+                            . . . 2 2 2 e e e e . . . . . 
+                            . . . e e e e e e e e . . . . 
+                            . . . e e e e e . . . . . . . 
+                            . . . . . . . . . . . . . . . 
+                            `,img`
+                            . . . . . 2 2 2 2 2 2 . . . . 
+                            . . . . 2 2 2 2 2 2 2 2 2 2 . 
+                            . . . . e e e 4 4 e 4 4 . . . 
+                            . . . e 4 e 4 4 4 e 4 4 4 4 . 
+                            . . . e 4 e e 4 4 4 e 4 4 4 4 
+                            . . . e e 4 4 4 4 e e e e e . 
+                            . . . . . 4 4 4 4 4 4 4 4 . . 
+                            . . e e e e 2 2 e e e . . . . 
+                            4 4 e e e e 2 2 2 e e e 4 4 . 
+                            4 4 4 4 e e 2 4 2 2 2 e e 4 . 
+                            4 4 4 . 2 2 2 2 2 2 2 2 . e . 
+                            . . . 2 2 2 2 2 2 2 2 2 e e . 
+                            . . 2 2 2 2 2 2 2 2 2 2 e e . 
+                            . e e 2 2 2 2 . . 2 2 2 e e . 
+                            . e e e e . . . . . . . . . . 
+                            . . e e e e . . . . . . . . . 
+                            . . . . . . . . . . . . . . . 
+                            `],
+                        100,
+                        false
+                        )
+                        pause(400)
+                    } else if (controller.left.isPressed()) {
+                        animation.stopAnimation(animation.AnimationTypes.All, mySprite)
+                        animation.runImageAnimation(
+                        mySprite,
+                        [img`
+                            . . . . . . 2 2 2 2 2 2 . . . 
+                            . . . 2 2 2 2 2 2 2 2 2 2 . . 
+                            . . . . . 4 e 4 4 e e e e . . 
+                            . . . 4 4 4 e 4 4 4 e 4 e e . 
+                            . . 4 4 4 e 4 4 4 e e 4 e e . 
+                            . . . e e e e 4 4 4 4 e e e . 
+                            . . . . 4 4 4 4 4 4 4 4 . . . 
+                            . . . . . . e e e 2 e e e . . 
+                            . . . e e e 2 e e 2 e e e e . 
+                            . . e e e e 2 2 2 2 e e e e e 
+                            . . 4 4 e 2 4 2 2 4 2 e 4 4 4 
+                            . . 4 4 4 2 2 2 2 2 2 4 4 4 4 
+                            . . 4 4 2 2 2 2 2 2 2 2 4 4 4 
+                            . . . . 2 2 2 2 . 2 2 2 2 . . 
+                            . . . e e e e . . . e e e e . 
+                            . . e e e e e . . . e e e e e 
+                            . . . . . . . . . . . . . . . 
+                            `,img`
+                            . . . . 2 2 2 2 2 2 . . . . . 
+                            . 2 2 2 2 2 2 2 2 2 2 . . . . 
+                            . . . 4 e 4 4 e e e e . . . . 
+                            . 4 4 4 e 4 4 4 e 4 e e . . . 
+                            4 4 4 e 4 4 4 e e 4 e e . . . 
+                            . e e e e 4 4 4 4 e e e . . . 
+                            . . 4 4 4 4 4 4 4 4 . . . . . 
+                            . . 4 4 e 2 e e e e e . . . . 
+                            . 4 4 4 e e e e e e 4 4 . . . 
+                            . . 4 4 e e e e e 2 4 4 4 . . 
+                            . . . 2 2 2 2 2 2 2 e e e . . 
+                            . . . 2 2 2 2 2 2 2 2 e e . . 
+                            . . . . 2 2 2 2 2 2 2 e e e . 
+                            . . . . . e e e e . . . e e . 
+                            . . . . e e e e e . . . . . . 
+                            . . . . . . . . . . . . . . . 
+                            . . . . . . . . . . . . . . . 
+                            `,img`
+                            . . . . 2 2 2 2 2 2 . . . . . 
+                            . 2 2 2 2 2 2 2 2 2 2 . . . . 
+                            . . . 4 e 4 4 e e e e . . . . 
+                            . 4 4 4 e 4 4 4 e 4 e e . . . 
+                            4 4 4 e 4 4 4 e e 4 e e . . . 
+                            . e e e e 4 4 4 4 e e e . . . 
+                            . . 4 4 4 4 4 4 4 4 . . . . . 
+                            . . . . e e e 2 e e e . . . . 
+                            . . . e e 2 2 e e e e e . . . 
+                            . . 4 2 2 4 2 2 e e e e . . . 
+                            . . 2 2 2 2 2 e e e e e . . . 
+                            . . 2 2 2 4 4 4 e e 2 2 . . . 
+                            . . . 2 2 2 4 4 e 2 2 . . . . 
+                            . . . e e e 2 2 2 2 . . . . . 
+                            . . e e e e e e e e . . . . . 
+                            . . . . . e e e e e . . . . . 
+                            . . . . . . . . . . . . . . . 
+                            `,img`
+                            . . . . . 2 2 2 2 2 2 . . . . 
+                            . . 2 2 2 2 2 2 2 2 2 2 . . . 
+                            . . . . 4 e 4 4 e e e e . . . 
+                            . . 4 4 4 e 4 4 4 e 4 e e . . 
+                            . 4 4 4 e 4 4 4 e e 4 e e . . 
+                            . . e e e e 4 4 4 4 e e e . . 
+                            . . . 4 4 4 4 4 4 4 4 . . . . 
+                            . . . . . e e 2 2 e e e e e . 
+                            4 4 4 e e e 2 2 2 e e e e 4 4 
+                            4 4 e e 2 2 2 4 2 e e e 4 4 4 
+                            . e e . 2 2 2 2 2 2 2 2 . 4 4 
+                            . e e 2 2 2 2 2 2 2 2 2 2 . . 
+                            . e e 2 2 2 2 2 2 2 2 2 2 2 . 
+                            . e e 2 2 2 2 . . 2 2 2 e e e 
+                            . . . . . . . . . . . e e e e 
+                            . . . . . . . . . . e e e e . 
+                            . . . . . . . . . . . . . . . 
+                            `],
+                        100,
+                        false
+                        )
+                        pause(400)
+                    } else {
+                        animation.stopAnimation(animation.AnimationTypes.All, mySprite)
+                        mySprite.setImage(img`
+                            . . . 2 2 2 2 2 2 . . . . . . 
+                            . . 2 2 2 2 2 2 2 2 2 2 . . . 
+                            . . e e e 4 4 e 4 4 . . . . . 
+                            . e 4 e 4 4 4 e 4 4 4 4 . . . 
+                            . e 4 e e 4 4 4 e 4 4 4 4 . . 
+                            . e e 4 4 4 4 e e e e e . . . 
+                            . . . 4 4 4 4 4 4 4 4 . . . . 
+                            . . e e 2 e e e e . . . . . . 
+                            . e e e 2 e e 2 e e e e . . . 
+                            e e e e 2 2 2 2 e e e e e . . 
+                            4 4 e 2 4 2 2 4 2 e 4 4 4 . . 
+                            4 4 4 2 2 2 2 2 2 4 4 4 4 . . 
+                            4 4 2 2 2 2 2 2 2 2 4 4 4 . . 
+                            . . 2 2 2 2 . 2 2 2 2 . . . . 
+                            . e e e e . . . e e e e . . . 
+                            e e e e e . . . e e e e e . . 
+                            . . . . . . . . . . . . . . . 
+                            `)
+                    }
                 }
             }
         }
